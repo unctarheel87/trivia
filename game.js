@@ -37,7 +37,6 @@ const trivia = {
     $('body').on('click', 'li', function() {
       if ($(this).text() == randTrivia.rightAnswer) {
         $('#result').text('Correct!')
-        result = true;
       } else {
         $('#result').text('Wrong...')
       }
