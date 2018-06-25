@@ -18,8 +18,10 @@ const trivia = {
     }
   ],
 
+  seconds: 30,
+
   getRandomTrivia: function() {
-    const randIndex = Math.round(Math.random() * this.questionBank.length);
+    const randIndex = Math.floor(Math.random() * this.questionBank.length);
     const randTrivia = this.questionBank[randIndex];
     return randTrivia;
   },
@@ -28,25 +30,63 @@ const trivia = {
     $('#question').text(randTrivia.question);
     for(let i = 0; i < randTrivia.answers.length; i++) {
       const answerChoice = $('<li>')
-      $('#answers').append(answerChoice)
+      $('#answers').append(answerChoice);
+      $('#result').text(' ');
       answerChoice.addClass('answer-choice').attr('value', i).text(randTrivia.answers[i]);
-    }  
+    }
+    //display timer
+    $('#timer').text('0:30');
+    trivia.seconds = 30;
+    intervalId = setInterval(trivia.timer, 1000);  
   },
 
   pickAnswer: (randTrivia) => {
-    $('body').on('click', 'li', function() {
+    $('body').one('click', 'li', function() {
       if ($(this).text() == randTrivia.rightAnswer) {
-        $('#result').text('Correct!')
+        $('#result').text('Correct!');
+        trivia.getNewQuestion();
+        clearInterval(intervalId);
       } else {
         $('#result').text('Wrong...')
+        trivia.getNewQuestion();
+        clearInterval(intervalId);
       }
     });
-  }
+  },
+
+  getNewQuestion: () => {
+    const randTrivia = trivia.getRandomTrivia();  
+      setTimeout(() => {
+        $('.answer-choice').remove();
+        trivia.displayQuestion(randTrivia);
+        trivia.pickAnswer(randTrivia);
+      }, 3000);
+  },
+
+  timer: () => {
+    trivia.seconds--
+    console.log(trivia.seconds)
+    $('#timer').text('0:' + trivia.seconds);
+    if(trivia.seconds === 0) {
+      $('#timer').text('0:0' + trivia.seconds);
+      trivia.timeIsUp();
+    } else if(trivia.seconds < 10) {
+      $('#timer').text('0:0' + trivia.seconds);
+    }
+  },
+
+  timeIsUp: () => {
+      $('#result').text('Time is up!')
+      trivia.getNewQuestion();
+      clearInterval(intervalId);
+    }
+
 }
 
 $(document).ready(function() {
-
+  let intervalId;
   let randTrivia = trivia.getRandomTrivia();
+  
   trivia.displayQuestion(randTrivia);
   trivia.pickAnswer(randTrivia);
 
