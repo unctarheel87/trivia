@@ -8,31 +8,31 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css"
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="jumbotron">
       <h1>Movie Trivia</h1>
     </div>
     <section class="questions-section">
-      <h2 id="timer"></h2>
-      <div class="card">
+      <div class="score-time d-flex justify-content-around">
+        <h2 class="score">Wrong: <span id="wrong">0</span></h2>
+        <h2 class="timer">Time left: <span id="timer"></span></h2>
+        <h2 class="score">Right: <span id="right">0</span></h2>
+      </div>
+      <h2 id="result"></h2>
+      <div class="card question-card">
         <h2 id="question"></h2>
         <div class="card-body">
           <ul id="answers">
 
           </ul>
-        </div>
-        <h2 id="result"></h2> 
+        </div> 
       </div>
     </section>
       
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="game.js"></script>
   </body>
 </html>
