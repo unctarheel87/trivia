@@ -167,6 +167,12 @@ const trivia = {
 }
 
 $(document).ready(function() {
-  trivia.getNewQuestion();
-  trivia.handleClickAnswer();
+  $('.question-card').css('opacity', '0');
+  if(trivia.questionIndex === 0) {
+    $('#start').on('click', function() {
+      trivia.getNewQuestion();
+      trivia.handleClickAnswer();
+      $('#start').remove();
+    })
+  }
 });
