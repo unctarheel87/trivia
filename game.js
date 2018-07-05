@@ -109,7 +109,7 @@ const trivia = {
         trivia.stopTimer();
       } else {
         $('#result').css('color', 'rgba(255, 99, 71, 0.9)')
-                    .html('<iframe src="https://thumbs.gfycat.com/SparklingWeightyLangur-size_restricted.gif" width="400" height="280" frameBorder="0"></iframe><h2>Wrong...</h2>')
+                    .html('<iframe src="https://thumbs.gfycat.com/SparklingWeightyLangur-size_restricted.gif" width="400" height="280" frameBorder="0"></iframe><h2>Wrong...</h2><h4>The correct answer was:<br>' + trivia.questionBank[trivia.questionIndex - 1].rightAnswer + '</h4>')
                     .fadeIn();
         trivia.removeCard();
         trivia.wrong++;
@@ -134,7 +134,7 @@ const trivia = {
   timeIsUp: () => {
     trivia.stopTimer();
     $('#result').css('color', 'rgba(255, 99, 71, 0.9)')
-                .html('<iframe src="https://thumbs.gfycat.com/AngelicAlertArizonaalligatorlizard-size_restricted.gif" width="420" height="280" frameBorder="0"></iframe><h2>Time is up!</h2>')            
+                .html('<iframe src="https://thumbs.gfycat.com/AngelicAlertArizonaalligatorlizard-size_restricted.gif" width="420" height="280" frameBorder="0"></iframe><h2>Time is up!</h2><h4>The correct answer was:<br>' + trivia.questionBank[trivia.questionIndex - 1].rightAnswer + '</h4>')            
                 .fadeIn();
     trivia.removeCard();
     trivia.wrong++;
